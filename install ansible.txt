@@ -1,0 +1,44 @@
+sudo apt-get install python3-pip
+sudo pip install ansible
+
+ansible.cfg
+
+[defaults]
+#inventory      = /etc/ansible/hosts
+inventory      = hosts
+
+hosts
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+ansible-inventory --list -y
+
+
+legacy old ssh algorithm fix
+=====================
+ls -la
+cd .ssh
+/.ssh$ vi config
+KexAlgorithms diffie-hellman-group1-sha1,curve25519-sha256@libssh.org,ecdh-sha2--
+nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-shaa
+256,diffie-hellman-group14-sha1
+Ciphers aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc
+
+
+ssh -vv admin@10.1.1.10
+
+
+
+===============ubuntu install sshpass======
+sudo apt-get update -y
+sudo apt-get install -y sshpass
+
+
+=============
+ansible all -m raw -a 'show version' -u admin -k
+
+ sudo ip addr add 10.10.10.10/24 dev ens3
+ sudo ip route default via 10.10.10.1
+
+ ansible-playbook ios_command.yaml
+
